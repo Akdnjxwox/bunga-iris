@@ -12,13 +12,13 @@ seed = 42
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Read original dataset
-iris_path = os.path.join(script_dir, "Iris.csv")
+iris_path = os.path.join(script_dir, "iris.csv")
 iris_df = pd.read_csv(iris_path)
-iris_df.sample(frac=1, random_state=seed)
+iris_df = iris_df.sample(frac=1, random_state=seed)
 
 # selecting features and target variable
-X = iris_df[['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm']]
-y = iris_df['Species']
+X = iris_df[['sepal_length', 'sepal_width', 'petal_length', 'petal_width']]
+y = iris_df['species']
 
 # split data into train and test sets
 # 70% training and 30% test

@@ -4,27 +4,23 @@ import numpy as np
 from prediction import predict
 
 st.title('Classifying Iris Flowers')
-st.markdown('Toy model to play to classify iris flowers into \ (setosa, versicolor, virginica) based on their sepal/petal \ and length/width.')
+st.markdown('Toy model to classify iris flowers into (setosa, versicolor, virginica) based on their sepal/petal and length/width.')
 
 st.header("Plant Features")
 col1, col2 = st.columns(2)
 
 with col1:
     st.text("Sepal characteristics")
-    sepal_1 = st.slider('Sepal Length (cm)', 1.0, 8.0, 0.5)
-    sepal_w = st.slider('Sepal Width (cm)', 2.0, 4.4, 0.5)
+    sepal_length = st.slider('Sepal Length (cm)', 1.0, 8.0, 5.0)
+    sepal_width = st.slider('Sepal Width (cm)', 2.0, 4.4, 3.0)
 
 with col2:
-    st.text("Pepal characteristics")
-    petal_1 = st.slider('Petal Length (cm)', 1.0, 7.0, 0.5)
-    petal_w = st.slider('Petal Width (cm)', 0.1, 2.5, 0.1)
+    st.text("Petal characteristics")
+    petal_length = st.slider('Petal Length (cm)', 1.0, 7.0, 4.0)
+    petal_width = st.slider('Petal Width (cm)', 0.1, 2.5, 1.0)
 
 st.text('')
 if st.button("Predict type of Iris"):
     result = predict(
-        np.array([[sepal_1, sepal_w, petal_1, petal_w]]))
-    st.text(result[0])
-
-st.text('')
-st.text('')
-st.markdown(
+        np.array([[sepal_length, sepal_width, petal_length, petal_width]]))
+    st.success(f'Predicted Iris Species: {result[0]}')

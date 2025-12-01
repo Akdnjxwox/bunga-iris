@@ -7,6 +7,9 @@ def predict(data):
     model_path = os.path.join(script_dir, "knn_model.sav")
     
     # Load the model
+    if not os.path.exists(model_path):
+        raise FileNotFoundError(f"Model file not found at {model_path}")
+    
     clf = joblib.load(model_path)
     
     # Make prediction
